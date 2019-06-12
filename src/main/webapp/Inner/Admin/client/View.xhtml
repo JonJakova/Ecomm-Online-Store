@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewClientTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewClientLabel_id}"/>
+                    <h:outputText value="#{clientController.selected.id}" title="#{bundle.ViewClientTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewClientLabel_username}"/>
+                    <h:outputText value="#{clientController.selected.username}" title="#{bundle.ViewClientTitle_username}"/>
+                    <h:outputText value="#{bundle.ViewClientLabel_password}"/>
+                    <h:outputText value="#{clientController.selected.password}" title="#{bundle.ViewClientTitle_password}"/>
+                    <h:outputText value="#{bundle.ViewClientLabel_firstname}"/>
+                    <h:outputText value="#{clientController.selected.firstname}" title="#{bundle.ViewClientTitle_firstname}"/>
+                    <h:outputText value="#{bundle.ViewClientLabel_lastname}"/>
+                    <h:outputText value="#{clientController.selected.lastname}" title="#{bundle.ViewClientTitle_lastname}"/>
+                    <h:outputText value="#{bundle.ViewClientLabel_age}"/>
+                    <h:outputText value="#{clientController.selected.age}" title="#{bundle.ViewClientTitle_age}"/>
+                    <h:outputText value="#{bundle.ViewClientLabel_phoneNum}"/>
+                    <h:outputText value="#{clientController.selected.phoneNum}" title="#{bundle.ViewClientTitle_phoneNum}"/>
+                    <h:outputText value="#{bundle.ViewClientLabel_address}"/>
+                    <h:outputText value="#{clientController.selected.address}" title="#{bundle.ViewClientTitle_address}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{clientController.destroyAndView}" value="#{bundle.ViewClientDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewClientEditLink}"/>
+                <br />
+                <h:commandLink action="#{clientController.prepareCreate}" value="#{bundle.ViewClientCreateLink}" />
+                <br />
+                <h:commandLink action="#{clientController.prepareList}" value="#{bundle.ViewClientShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewClientIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

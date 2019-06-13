@@ -1,17 +1,12 @@
-
 package Connection_Bean;
 
 import java.sql.SQLException;
-
 
 public class DataGatherer extends DB_Connection{
     
     public DataGatherer(){
         super();
-        
     }
-    
-//    DataGatherer dg = new DataGatherer();
     
     public boolean auth(String username, String password) throws ClassNotFoundException, SQLException{
       connect();
@@ -27,9 +22,10 @@ public class DataGatherer extends DB_Connection{
           return false;
       }
     }
-
-   
 }
+
+
+
 
 
 

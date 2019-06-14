@@ -43,18 +43,6 @@ public class LoginBean implements Serializable {
              if(verify==true){
                  return navigationBean.redirectToWelcome();
              }
-             
-//		// Get every user from our sample database :)
-//		for (String user: users) {
-//			String dbUsername = user.split(":")[0];
-//			String dbPassword = user.split(":")[1];
-//			
-//			// Successful login
-//			if (dbUsername.equals(username) && dbPassword.equals(password)) {
-//				loggedIn = true;
-//				return navigationBean.redirectToWelcome();
-//			}
-//		}
 		
 		// Set login ERROR
 		FacesMessage msg = new FacesMessage("Login error!", "ERROR MSG");
@@ -114,6 +102,7 @@ public class LoginBean implements Serializable {
 	}
 	
 }
+
 
 
 

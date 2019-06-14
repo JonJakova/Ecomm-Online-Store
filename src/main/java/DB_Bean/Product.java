@@ -27,6 +27,8 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p"),
     @NamedQuery(name = "Product.findById", query = "SELECT p FROM Product p WHERE p.id = :id"),
+    @NamedQuery(name = "Product.findByCategoryName", query = "SELECT p FROM Product p WHERE p.categoryName = :categoryName"),
+    @NamedQuery(name = "Product.findByUserId", query = "SELECT p FROM Product p WHERE p.userId = :userId"),
     @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name"),
     @NamedQuery(name = "Product.findByPrice", query = "SELECT p FROM Product p WHERE p.price = :price"),
     @NamedQuery(name = "Product.findByStockNum", query = "SELECT p FROM Product p WHERE p.stockNum = :stockNum"),
@@ -40,6 +42,14 @@ public class Product implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "category_name")
+    private String categoryName;
+    @Basic(optional = false)
+    @Column(name = "user_id")
+    private Integer userId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 80)
@@ -71,8 +81,10 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public Product(Integer id, String name, float price, int stockNum, String description, String imgUrl) {
+    public Product(Integer id, String categoryName, Integer userId, String name, float price, int stockNum, String description, String imgUrl) {
         this.id = id;
+        this.categoryName = categoryName;
+        this.userId = userId;
         this.name = name;
         this.price = price;
         this.stockNum = stockNum;
@@ -86,6 +98,22 @@ public class Product implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+    
+    public String getCategoryName(){
+        return categoryName;
+    }
+    
+    public void setCategoryName(String categoryName){
+        this.categoryName = categoryName;
+    }
+    
+    public Integer getUserId(){
+        return userId;
+    }
+    
+    public void setUserId(Integer userId){
+        this.userId = userId;
     }
 
     public String getName() {
@@ -154,4 +182,5 @@ public class Product implements Serializable {
     }
     
 }
+
 

@@ -28,6 +28,18 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductTitle_categoryName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.categoryName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductTitle_userId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListProductTitle_name}"/>
                             </f:facet>
                             <h:outputText value="#{item.name}"/>

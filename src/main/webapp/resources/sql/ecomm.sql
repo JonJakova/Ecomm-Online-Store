@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2019 at 05:22 PM
+-- Generation Time: Jun 17, 2019 at 09:33 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -21,6 +21,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `ecomm`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(3) NOT NULL,
+  `username` varchar(25) NOT NULL,
+  `password` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -60,6 +79,14 @@ CREATE TABLE `client` (
   `address` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `client`
+--
+
+INSERT INTO `client` (`id`, `username`, `password`, `firstname`, `lastname`, `age`, `phone_num`, `address`) VALUES
+(1, 'Kelvin123', '123', 'Kelvin', 'Rumani', 21, '234278346', 'Tirane'),
+(2, 'jon21', '123', 'Jon', 'Jakova', 21, '0676247162', 'Durres');
+
 -- --------------------------------------------------------
 
 --
@@ -68,6 +95,8 @@ CREATE TABLE `client` (
 
 CREATE TABLE `product` (
   `id` int(7) NOT NULL,
+  `category_name` varchar(45) NOT NULL,
+  `user_id` int(6) NOT NULL,
   `name` varchar(80) NOT NULL,
   `price` float NOT NULL,
   `stock_num` int(4) NOT NULL,
@@ -79,8 +108,10 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `price`, `stock_num`, `description`, `img_url`) VALUES
-(1, 'Precision 6000T', 800, 4, 'Dell Desctop Intel Xeon ', '');
+INSERT INTO `product` (`id`, `category_name`, `user_id`, `name`, `price`, `stock_num`, `description`, `img_url`) VALUES
+(1, '0', 0, 'Precision 6000T', 800, 4, 'Dell Desctop Intel Xeon ', ''),
+(2, '0', 0, 'Iphone X', 1200, 4, 'Apple Smartphone', 'https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP770/iphonex.png'),
+(3, 'Tech', 1, 'Dell Latitute', 344, 2, 'Dell Laptop', 'whatever');
 
 -- --------------------------------------------------------
 
@@ -100,6 +131,12 @@ CREATE TABLE `transaction` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `category`
@@ -130,6 +167,12 @@ ALTER TABLE `transaction`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -139,13 +182,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `transaction`

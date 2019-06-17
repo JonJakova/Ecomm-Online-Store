@@ -17,6 +17,10 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditProductLabel_id}" for="id" />
                     <h:inputText id="id" value="#{productController.selected.id}" title="#{bundle.EditProductTitle_id}" required="false" requiredMessage="#{bundle.EditProductRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditProductLabel_categoryName}" for="categoryName" />
+                    <h:inputText id="categoryName" value="#{productController.selected.categoryName}" title="#{bundle.EditProductTitle_categoryName}" required="true" requiredMessage="#{bundle.EditProductRequiredMessage_categoryName}"/>
+                    <h:outputLabel value="#{bundle.EditProductLabel_userId}" for="userId" />
+                    <h:inputText id="userId" value="#{productController.selected.userId}" title="#{bundle.EditProductTitle_userId}" required="true" requiredMessage="#{bundle.EditProductRequiredMessage_userId}"/>
                     <h:outputLabel value="#{bundle.EditProductLabel_name}" for="name" />
                     <h:inputText id="name" value="#{productController.selected.name}" title="#{bundle.EditProductTitle_name}" required="true" requiredMessage="#{bundle.EditProductRequiredMessage_name}"/>
                     <h:outputLabel value="#{bundle.EditProductLabel_price}" for="price" />

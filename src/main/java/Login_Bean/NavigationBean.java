@@ -29,7 +29,7 @@ public class NavigationBean implements Serializable {
 	 * @return Login page name.
 	 */
 	public String toLogin() {
-		return "/login.xhtml";
+		return "/login.xhtml?faces-redirect=true";
 	}
 	
 	/**
@@ -53,7 +53,7 @@ public class NavigationBean implements Serializable {
 	 * @return Welcome page name.
 	 */
 	public String redirectToWelcome() {
-		return "/Inner/Admin/product/List.xhtml?faces-redirect=true";
+		return "/Inner/Admin/AdminPage.xhtml?faces-redirect=true";
 	}
 	
 	/**
@@ -65,5 +65,7 @@ public class NavigationBean implements Serializable {
 	}
 	
 }
+
+
 
 

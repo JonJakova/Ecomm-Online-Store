@@ -1,11 +1,13 @@
 package Connection_Bean;
 
+import DB_Bean.Product;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 
 public class DB_Connection {
@@ -20,6 +22,7 @@ public class DB_Connection {
     protected Statement stm;
     protected PreparedStatement pstm;
     protected ResultSet rs;
+    protected List<Product> productList;
     
     protected void connect() throws ClassNotFoundException{
         try{
@@ -41,6 +44,9 @@ public class DB_Connection {
     }
    
 }
+
+
+
 
 
 

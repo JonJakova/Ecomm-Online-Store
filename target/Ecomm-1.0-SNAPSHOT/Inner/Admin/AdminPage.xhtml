@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Admin Page</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h:form>
+        <h2>Welcome #{loginBean.username}! </h2>
+        <h:link value="Clients" outcome="/Inner/Admin/client/List" /> <br/>
+        <h:link value="Categories" outcome="/Inner/Admin/category/List" /> <br/>
+        <h:link value="Products" outcome="/Inner/Admin/product/List" /> <br/>
+        <h:link value="Transactions" outcome="/Inner/Admin/transaction/List" /> <br/><br/>
+        <h:commandLink action="#{loginBean.doLogout}" value="Logout"/>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

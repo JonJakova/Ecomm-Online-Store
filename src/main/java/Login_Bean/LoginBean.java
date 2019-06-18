@@ -16,7 +16,6 @@ import javax.faces.context.FacesContext;
 public class LoginBean implements Serializable {
 
 	private static final long serialVersionUID = 7765876811740798583L;
-	private static final String[] users = {"anna:qazwsx","kate:123456"};
 	private String username;
 	private String password;
 	private boolean loggedIn;
@@ -40,17 +39,27 @@ public class LoginBean implements Serializable {
              catch(ClassNotFoundException e){
                  System.err.println("Error: "+e);
              }
-             if(verify==true){
-                 return navigationBean.redirectToWelcome();
-             }
-		
-		// Set login ERROR
+             
+             if(loggedIn==false){
+                 if(verify==true){
+                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("username", username);
+                 // Set login ERROR
 		FacesMessage msg = new FacesMessage("Login error!", "ERROR MSG");
         msg.setSeverity(FacesMessage.SEVERITY_ERROR);
         FacesContext.getCurrentInstance().addMessage(null, msg);
+                 return navigationBean.redirectToWelcome();
+             }
+                 else
+                     return navigationBean.toLogin();
+             }
+             else{
+                  return navigationBean.toLogin();
+             }
+		
+		
 		
 		// To to login page
-		return navigationBean.toLogin();
+//		return navigationBean.toLogin();
 		
 	}
 	
@@ -61,7 +70,7 @@ public class LoginBean implements Serializable {
 	public String doLogout() {
 		// Set the paremeter indicating that user is logged in to false
 		loggedIn = false;
-		
+		          System.out.println("Reached doLogout");
 		// Set logout message
 		FacesMessage msg = new FacesMessage("Logout success!", "INFO MSG");
 		msg.setSeverity(FacesMessage.SEVERITY_INFO);
@@ -102,6 +111,9 @@ public class LoginBean implements Serializable {
 	}
 	
 }
+
+
+
 
 
 

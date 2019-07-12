@@ -45,8 +45,12 @@ public class DataGatherer extends DB_Connection{
         }
         return productList;
     }
+    
+    public List<Product> filter() throws ClassNotFoundException, SQLException{
+        
+        return null;
+    }
 }
-
 
 
 

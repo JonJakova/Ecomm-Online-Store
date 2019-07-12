@@ -20,6 +20,15 @@
                     #{p.name}
                 </h:column>
             </h:dataTable>
+            <br/><br/><br/>
+            <h:form >
+            <h:dataTable value="#{utility.model}" var="product">
+                <h:column>
+                    <f:facet name="header"></f:facet>#{product.name}
+                    <h:commandButton value="View" action="productPage"/>
+                </h:column>
+            </h:dataTable>
+            </h:form>
         </center>
     </h:body>
 </html>

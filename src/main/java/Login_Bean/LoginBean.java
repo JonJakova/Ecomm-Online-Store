@@ -60,6 +60,7 @@ public class LoginBean implements Serializable {
 	public String doLogout() {
 		// Set the paremeter indicating that user is logged in to false
 		loggedIn = false;
+                setUsername(null);
 		          System.out.println("Reached doLogout");
 		// Set logout message
 		FacesMessage msg = new FacesMessage("Logout success!", "INFO MSG");
@@ -98,3 +99,4 @@ public class LoginBean implements Serializable {
 	}
 	
 }
+

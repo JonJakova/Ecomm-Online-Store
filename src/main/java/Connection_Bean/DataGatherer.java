@@ -2,6 +2,7 @@ package Connection_Bean;
 
 import DB_Bean.Product;
 import DB_Bean.Category;
+import DB_Bean.Client;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +15,18 @@ public class DataGatherer extends DB_Connection{
     
     public boolean auth(String username, String password) throws ClassNotFoundException, SQLException{
       connect();
-      query="select * from admin where username = '"+username+"' and password = '"+password+"'";
+      query="select * from client where username = '"+username+"' and password = '"+password+"'";
       stm=conn.createStatement();
       rs=stm.executeQuery(query);
       if(rs.next()){
+          client= new Client();
+          client.setId(rs.getInt("id"));
+          client.setUsername(rs.getString("username"));
+          client.setFirstname(rs.getString("firstname"));
+          client.setLastname(rs.getString("lastname"));
+          client.setAge(rs.getInt("age"));
+          client.setPhoneNum(rs.getString("phone_num"));
+          client.setAddress(rs.getString("address"));
           closeConn();
           return true;
       }
@@ -27,6 +36,21 @@ public class DataGatherer extends DB_Connection{
       }
     }
     
+//    public boolean authAdmin(String username, String password) throws ClassNotFoundException, SQLException{
+//        connect();
+//        query="select * from admin where username = '"+username+"' and password = '"+password+"'";
+//      stm=conn.createStatement();
+//      rs=stm.executeQuery(query);
+//      if(rs.next()){
+//          closeConn();
+//          return true;
+//      }
+//      else{
+//          closeConn();
+//          return false;
+//      }
+//    }
+//    
      private void getProductFromDB(String query) throws ClassNotFoundException, SQLException{
         connect();
         stm=conn.createStatement();
@@ -47,7 +71,7 @@ public class DataGatherer extends DB_Connection{
     }
      
      public List<Category> getCategyList() throws ClassNotFoundException, SQLException{
-         query="select 8 from category";
+         query="select * from category";
          connect();
          stm=conn.createStatement();
          rs=stm.executeQuery(query);
@@ -104,6 +128,14 @@ public class DataGatherer extends DB_Connection{
         }
     }
 }
+
+
+
+
+
+
+
+
 
 
 

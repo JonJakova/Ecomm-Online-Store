@@ -53,7 +53,7 @@ public class NavigationBean implements Serializable {
 	 * @return Welcome page name.
 	 */
 	public String redirectToWelcome() {
-		return "/Inner/Admin/AdminPage.xhtml?faces-redirect=true";
+		return "/Inner/Client/Welcome.xhtml?faces-redirect=true";
 	}
 	
 	/**
@@ -65,6 +65,7 @@ public class NavigationBean implements Serializable {
 	}
 	
 }
+
 
 
 

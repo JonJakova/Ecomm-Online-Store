@@ -19,6 +19,7 @@ DB_Bean\Transaction.class
 Connection_Bean\DataGatherer.class
 DB_Bean\ProductFacade.class
 DB_Bean\Category.class
+Connection_Bean\DataSender.class
 DB_Bean\TransactionController$1.class
 DB_Bean\AbstractFacade.class
 DB_Bean\Client.class

@@ -2,12 +2,12 @@
 package Utility_Bean;
 
 import Connection_Bean.DataGatherer;
+import DB_Bean.Category;
 import DB_Bean.Product;
 import java.sql.SQLException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 
 @ManagedBean(name="manager")
 @SessionScoped
@@ -25,6 +25,10 @@ public class Manager {
     
     public List<Product> filterProductList() throws ClassNotFoundException, SQLException{
         return dg.filter(category, highToLow, lowToHigh);
+    }
+    
+    public List<Category> getCatList() throws ClassNotFoundException, SQLException{
+        return dg.getCategyList();
     }
     
     public String view(){
@@ -73,6 +77,7 @@ public class Manager {
         this.lowToHigh = lowToHigh;
     }
 }
+
 
 
 

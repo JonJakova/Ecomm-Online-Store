@@ -15,10 +15,11 @@
         <h:link value="login" outcome="login"/> <br/><br/><br/>
         
         <center>
+            <h2>#{loginBean.username}</h2>
             <h:selectOneMenu value="#{manager.category}">
-                <f:selectItem itemValue="Tech" itemLabel="Tech Category"/>
+                <f:selectItems value="#{manager.catList}" var="category" itemValue="#{category.categoryName}"/>
             </h:selectOneMenu> <br/><br/>
-            <h:outputLabel value="#{p}" />
+           
             <h:dataTable value="#{manager.productList}" var="p">
                 <h:column>
                     <f:facet name="header">Name</f:facet>

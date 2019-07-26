@@ -1,6 +1,7 @@
 package Connection_Bean;
 
 import DB_Bean.Category;
+import DB_Bean.Client;
 import DB_Bean.Product;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,7 +24,10 @@ public class DB_Connection {
     protected Statement stm;
     protected PreparedStatement pstm;
     protected ResultSet rs;
+    protected Client client;
+    protected Product selectedProduct;
     protected List<Product> productList;
+    protected List<Product> cartList;
     protected List<Category> categoryList;
     
     protected void connect() throws ClassNotFoundException{
@@ -46,4 +50,7 @@ public class DB_Connection {
     }
    
 }
+
+
+
 

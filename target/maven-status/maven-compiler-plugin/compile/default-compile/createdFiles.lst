@@ -6,12 +6,14 @@ Login_Bean\LoginBean.class
 DB_Bean\ClientController$ClientControllerConverter.class
 DB_Bean\ClientFacade.class
 DB_Bean\ProductController.class
+Utility_Bean\DataModelJ.class
 DB_Bean\Product.class
 DB_Bean\CategoryController$CategoryControllerConverter.class
 DB_Bean\ClientController.class
 Connection_Bean\DB_Connection.class
 DB_Bean\TransactionController$TransactionControllerConverter.class
 DB_Bean\util\JsfUtil.class
+Utility_Bean\Manager.class
 DB_Bean\TransactionController.class
 DB_Bean\Transaction.class
 Connection_Bean\DataGatherer.class

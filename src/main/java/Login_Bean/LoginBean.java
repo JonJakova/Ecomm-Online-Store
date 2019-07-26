@@ -55,18 +55,8 @@ public class LoginBean implements Serializable {
              else{
                   return navigationBean.toLogin();
              }
-		
-		
-		
-		// To to login page
-//		return navigationBean.toLogin();
-		
 	}
 	
-	/**
-	 * Logout operation.
-	 * @return
-	 */
 	public String doLogout() {
 		// Set the paremeter indicating that user is logged in to false
 		loggedIn = false;
@@ -78,10 +68,7 @@ public class LoginBean implements Serializable {
 		
 		return navigationBean.toLogin();
 	}
-
-	// ------------------------------
-	// Getters & Setters 
-	
+        
 	public String getUsername() {
 		return username;
 	}
@@ -111,11 +98,3 @@ public class LoginBean implements Serializable {
 	}
 	
 }
-
-
-
-
-
-
-
-

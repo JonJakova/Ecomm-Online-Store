@@ -5,6 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="clientStyle.css"/>
     </h:head>
     <h:body>
         <h:link value="GOTO" outcome="/Inner/Admin/client/List" /> <br/>
@@ -14,6 +15,10 @@
         <h:link value="login" outcome="login"/> <br/><br/><br/>
         
         <center>
+            <h:selectOneMenu value="#{manager.category}">
+                <f:selectItem itemValue="Tech" itemLabel="Tech Category"/>
+            </h:selectOneMenu> <br/><br/>
+            <h:outputLabel value="#{p}" />
             <h:dataTable value="#{manager.productList}" var="p">
                 <h:column>
                     <f:facet name="header">Name</f:facet>
@@ -24,8 +29,11 @@
             <h:form >
             <h:dataTable value="#{utility.model}" var="product">
                 <h:column>
-                    <f:facet name="header"></f:facet>#{product.name}
-                    <h:commandButton value="View" action="productPage"/>
+                    <f:facet name="header"></f:facet>
+                    <h:graphicImage class="graphicImage" value="#{product.imgUrl}"/><br/>
+                    #{product.name} <br/>
+                    #{product.price}<br/>
+                    <h:commandButton value="View Product" action="#{utility.view}"/>
                 </h:column>
             </h:dataTable>
             </h:form>

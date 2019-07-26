@@ -3,10 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Product Info Page</title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
     </h:head>
     <h:body>
-        <p>#{utility.product.imgUrl}</p>
+        <center>
+            <h1>Product Info</h1><br/>
+            #{utility.product.name}<br/>
+            #{utility.product.price}<br/>
+            #{utility.product.categoryName}<br/>
+            #{utility.product.description}<br/>
+            <h:graphicImage class="graphicImageProduct" value="#{utility.product.imgUrl}"/><br/>
+        </center>
+        <h:link value="Go to Main Page" outcome="/index"/>
     </h:body>
 </html>
 

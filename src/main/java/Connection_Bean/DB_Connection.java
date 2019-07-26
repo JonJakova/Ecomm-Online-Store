@@ -24,6 +24,7 @@ public class DB_Connection {
     protected PreparedStatement pstm;
     protected ResultSet rs;
     protected List<Product> productList;
+    protected List<Category> categoryList;
     
     protected void connect() throws ClassNotFoundException{
         try{
@@ -45,12 +46,4 @@ public class DB_Connection {
     }
    
 }
-
-
-
-
-
-
-
-
 

@@ -5,15 +5,13 @@ import Connection_Bean.DataGatherer;
 import DB_Bean.Product;
 import java.io.Serializable;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
 @ManagedBean(name = "utility")
-@ViewScoped
+@SessionScoped
 public class DataModelJ extends DataGatherer implements Serializable{
    
     private DataModel model;
@@ -25,7 +23,7 @@ public class DataModelJ extends DataGatherer implements Serializable{
     
     public String view(){
         product = (Product) model.getRowData();
-        return "view";
+        return "productPage";
     }
     
     public DataModel getModel(){
@@ -36,6 +34,10 @@ public class DataModelJ extends DataGatherer implements Serializable{
         return product;
     }
 }
+
+
+
+
 
 
 

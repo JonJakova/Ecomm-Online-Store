@@ -27,6 +27,7 @@ public class DataGatherer extends DB_Connection{
           client.setAge(rs.getInt("age"));
           client.setPhoneNum(rs.getString("phone_num"));
           client.setAddress(rs.getString("address"));
+          setClient(client);
           closeConn();
           return true;
       }
@@ -58,6 +59,7 @@ public class DataGatherer extends DB_Connection{
         productList = new ArrayList<>();
         while(rs.next()){ 
             Product p = new Product();
+            p.setId(rs.getInt("id"));
             p.setCategoryName(rs.getString("category_name"));
             p.setUserId(rs.getInt("user_id"));
             p.setName(rs.getString("name"));
@@ -128,9 +130,6 @@ public class DataGatherer extends DB_Connection{
         }
     }
 }
-
-
-
 
 
 

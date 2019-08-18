@@ -95,46 +95,28 @@ public class DataGatherer extends DB_Connection{
         return productList;
     }
     
-    public List<Product> filter(String category, boolean hightToLow, boolean lowToHigh) throws ClassNotFoundException, SQLException{
+    public List<Product> filter(String category, String highOrLow) throws ClassNotFoundException, SQLException{
         connect();
-        if(category!=null){
-            if(hightToLow==true ){
-                query="select * from product p inner join category c on p.category_name = c.category_name where p.category_name = '"+category+"' order by p.price";
-                getProductFromDB(query);
-                return productList;
-            }
-            else if(lowToHigh==true){
-                query="select * from product p inner join category c on p.category_name = c.category_name where p.category_name = '"+category+"' order by p.price";
-                getProductFromDB(query);
-                return productList;
-            }
-            else{
-                query="select * from product p inner join category c on p.category_name = c.category_name where p.category_name = '"+category+"'";
-                getProductFromDB(query);
-                return productList;
-            }
-        }
-        else if(lowToHigh==true){
-                query="select * from product p inner join category c on p.category_name = c.category_name where p.category_name = '"+category+"' order by p.price";
-                getProductFromDB(query);
-                return productList;
-            }
-        else if(hightToLow==true){
-                query="select * from product p inner join category c on p.category_name = c.category_name where p.category_name = '"+category+"' order by p.price";
-                getProductFromDB(query);
-                return productList;
-            }
-        else{
-            System.err.println("Missing selected category");
-            return null;
-        }
+        query="select * from product where category_name = '"+category+"'";
+        getProductFromDB(query);
+        return productList;
+    }
+
+    protected String category;
+    /**
+     * @return the category
+     */
+    public String getCategory() {
+        return category;
+    }
+
+    /**
+     * @param category the category to set
+     */
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
-
-
-
-
-
 
 
 

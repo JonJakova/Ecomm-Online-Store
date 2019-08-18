@@ -2,12 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Ecomm</title>
+        <title>Facelet Title</title>
         <h:outputStylesheet library="css" name="clientStyle.css"/>
-        <h:outputScript library="js" name="mainJs"/>
     </h:head>
     <h:body>
         <h:link value="GOTO" outcome="/Inner/Admin/client/List" /> <br/>
@@ -18,35 +16,27 @@
         
         <center>
             <h2>#{loginBean.username}</h2>
-            
-            <h:form>
-            <h:selectOneMenu value="#{manager.category}">      
+            <h:selectOneMenu value="#{manager.category}">
                 <f:selectItems value="#{manager.catList}" var="category" itemValue="#{category.categoryName}"/>
-            </h:selectOneMenu> <br/>
-            <h:commandButton action="@this"/><br/>
-            </h:form>
-<!--            
-            <h:form>
-            <h:selectOneMenu value="#{manager.hightOrLow}">
-                <f:selectItem itemValue="high" itemLabel="From highest to lowest"/>
-                <f:selectItem itemValue="low" itemLabel="From lowest to highest"/>
-            </h:selectOneMenu> <br/>
-            <h:commandButton>
-                <f:ajax execute="@form" render="@form"/>
-            </h:commandButton>
-            </h:form>-->
-            
-            <h:form>
-            <p:dataTable id="datatbl" value="#{utility.model}" var="product">
-                <p:column>
-                    <f:facet name="header">Item</f:facet>
-                    <p:graphicImage class="graphicImage" value="#{product.imgUrl}"/><br/>
+            </h:selectOneMenu> <br/><br/>
+           
+            <h:dataTable value="#{manager.productList}" var="p">
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    #{p.name}
+                </h:column>
+            </h:dataTable>
+            <br/><br/><br/>
+            <h:form >
+            <h:dataTable value="#{utility.model}" var="product">
+                <h:column>
+                    <f:facet name="header"></f:facet>
+                    <h:graphicImage class="graphicImage" value="#{product.imgUrl}"/><br/>
                     #{product.name} <br/>
                     #{product.price}<br/>
-                    <p:commandButton value="View Product" action="#{utility.view}"/>
-                </p:column>
-            </p:dataTable>
-                <p:commandButton value="Refresh" update="datatbl"/>
+                    <h:commandButton value="View Product" action="#{utility.view}"/>
+                </h:column>
+            </h:dataTable>
             </h:form>
         </center>
     </h:body>

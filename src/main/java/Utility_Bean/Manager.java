@@ -2,81 +2,101 @@
 package Utility_Bean;
 
 import Connection_Bean.DataGatherer;
+import Connection_Bean.DataSender;
 import DB_Bean.Category;
 import DB_Bean.Product;
+import com.sun.net.httpserver.HttpServer;
 import java.sql.SQLException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionListener;
+import javax.servlet.http.HttpServletRequest;
 
 @ManagedBean(name="manager")
 @SessionScoped
-public class Manager {
+public class Manager{
     
     DataGatherer dg = new DataGatherer();
-    private String category;
-    private boolean highToLow;
-    private boolean lowToHigh;
-  
+    DataSender ds = new DataSender();
+    private String productId;
+    private String selectedCategery;
+    private String hightOrLow;
     
     public List<Product> getProductList() throws ClassNotFoundException, SQLException{
         return dg.getRandomProduct();
     }
     
-    public List<Product> filterProductList() throws ClassNotFoundException, SQLException{
-        return dg.filter(category, highToLow, lowToHigh);
+    public void buyProduct() throws ClassNotFoundException, SQLException{
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) fc.getExternalContext().getRequest();
+        productId = request.getParameter("productId");
+        System.out.println("Product ID is: "+productId);
+        ds.buyItem(productId);
     }
     
-    public List<Category> getCatList() throws ClassNotFoundException, SQLException{
-        return dg.getCategyList();
+    public void viewCategory(){
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) fc.getExternalContext().getRequest();
+        selectedCategery = request.getParameter("selectedCategory");
+        System.out.println("Category ID is: "+selectedCategery);
     }
     
-    public String view(){
-        return "view";
+    public List<Product> displayCategory() throws ClassNotFoundException, SQLException{
+        return dg.filter(selectedCategery, null);
     }
 
     /**
-     * @return the category
+     * @return the hightOrLow
      */
-    public String getCategory() {
-        return category;
+    public String getHightOrLow() {
+        return hightOrLow;
     }
 
     /**
-     * @param category the category to set
+     * @param hightOrLow the hightOrLow to set
      */
-    public void setCategory(String category) {
-        this.category = category;
+    public void setHightOrLow(String hightOrLow) {
+        this.hightOrLow = hightOrLow;
     }
 
     /**
-     * @return the highToLow
+     * @return the productId
      */
-    public boolean isHighToLow() {
-        return highToLow;
+    public String getProductId() {
+        return productId;
     }
 
     /**
-     * @param highToLow the highToLow to set
+     * @param productId the productId to set
      */
-    public void setHighToLow(boolean highToLow) {
-        this.highToLow = highToLow;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     /**
-     * @return the lowToHigh
+     * @return the selectedCategery
      */
-    public boolean isLowToHigh() {
-        return lowToHigh;
+    public String getSelectedCategery() {
+        return selectedCategery;
     }
 
     /**
-     * @param lowToHigh the lowToHigh to set
+     * @param selectedCategery the selectedCategery to set
      */
-    public void setLowToHigh(boolean lowToHigh) {
-        this.lowToHigh = lowToHigh;
+    public void setSelectedCategery(String selectedCategery) {
+        this.selectedCategery = selectedCategery;
     }
 }
+
+
+
+
+
+
+
+
 
 
 

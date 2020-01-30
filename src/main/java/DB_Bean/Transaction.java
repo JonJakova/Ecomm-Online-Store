@@ -34,6 +34,7 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Transaction.findByItem", query = "SELECT t FROM Transaction t WHERE t.item = :item"),
     @NamedQuery(name = "Transaction.findByStatus", query = "SELECT t FROM Transaction t WHERE t.status = :status"),
     @NamedQuery(name = "Transaction.findByPrice", query = "SELECT t FROM Transaction t WHERE t.price = :price"),
+    @NamedQuery(name = "Transaction.findByAddress", query = "SELECT t FROM Transaction t WHERE t.address = :address"),
     @NamedQuery(name = "Transaction.findByTimestamp", query = "SELECT t FROM Transaction t WHERE t.timestamp = :timestamp")})
 public class Transaction implements Serializable {
 
@@ -62,6 +63,11 @@ public class Transaction implements Serializable {
     private float price;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 500)
+    @Column(name = "address")
+    private String address;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "timestamp")
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
@@ -73,7 +79,7 @@ public class Transaction implements Serializable {
         this.id = id;
     }
 
-    public Transaction(Integer id, int userId, String item, boolean status, float price, Date timestamp) {
+    public Transaction(Integer id, int userId, String item, boolean status, float price, String address, Date timestamp) {
         this.id = id;
         this.userId = userId;
         this.item = item;
@@ -121,6 +127,14 @@ public class Transaction implements Serializable {
     public void setPrice(float price) {
         this.price = price;
     }
+    
+    public String getAddress(){
+        return address;
+    }
+    
+    public void setAddress(String address){
+        this.address=address;
+    }
 
     public Date getTimestamp() {
         return timestamp;
@@ -156,4 +170,8 @@ public class Transaction implements Serializable {
     }
     
 }
+
+
+
+
 

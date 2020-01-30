@@ -2,11 +2,14 @@ DB_Bean\CategoryController.class
 DB_Bean\util\PaginationHelper.class
 DB_Bean\CategoryFacade.class
 DB_Bean\ProductController$ProductControllerConverter.class
+Utility_Bean\DataModelT.class
+Utility_Bean\SearchFilter.class
+Utility_Bean\DataModelC.class
 Login_Bean\LoginBean.class
+Utility_Bean\RegistrationModel.class
 DB_Bean\ClientController$ClientControllerConverter.class
 DB_Bean\ClientFacade.class
 DB_Bean\ProductController.class
-Utility_Bean\DataModelJ.class
 DB_Bean\Product.class
 DB_Bean\CategoryController$CategoryControllerConverter.class
 DB_Bean\ClientController.class
@@ -16,8 +19,11 @@ DB_Bean\util\JsfUtil.class
 Utility_Bean\Manager.class
 DB_Bean\TransactionController.class
 DB_Bean\Transaction.class
+Utility_Bean\EditModel.class
 Connection_Bean\DataGatherer.class
 DB_Bean\ProductFacade.class
+Utility_Bean\DataModelP.class
+Utility_Bean\SearchFilter$1.class
 DB_Bean\Category.class
 Connection_Bean\DataSender.class
 DB_Bean\TransactionController$1.class

@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <meta charset="utf-8"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Edit Product</title>
+        <!-- Google font -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet"></link>
+
+        <!-- Bootstrap -->
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"  />
+
+        <!-- Slick -->
+        <link type="text/css" rel="stylesheet" href="css/slick.css"/>
+        <h:outputStylesheet library="css" name="slick.css"  />
+        <link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
+        <h:outputStylesheet library="css" name="slick-theme.css"  />
+
+        <!-- nouislider -->
+        <link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+        <h:outputStylesheet library="css" name="nouislider.min.css"  />
+
+        <!-- Font Awesome Icon -->
+        <link rel="stylesheet" href="css/font-awesome.min.css"></link>
+        <h:outputStylesheet library="css" name="font-awesome.min.css"  />
+
+        <!-- Custom stlylesheet -->
+        <link type="text/css" rel="stylesheet" href="css/style.css"/>
+        <h:outputStylesheet library="css" name="style.css"  />
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </h:head>
+    <h:body>
+        <header>
+            <!-- TOP HEADER -->
+            <div id="top-header">
+                <div class="container">
+                    <ul class="header-links pull-left">
+                        <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
+                        <li><h:link class="fa fa-link" value="Main Page" outcome="/index"></h:link></li>
+                    </ul>
+                    <ul class="header-links pull-right">
+                        <li><h:link class="fa fa-user" rendered="#{loginBean.loggedIn==false}" value="Login" outcome="login"/></li>
+                        <li><h:link class="fa fa-user" rendered="#{loginBean.loggedIn==true}" value="#{loginBean.username}" outcome="/Inner/Client/Welcome"/></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /TOP HEADER -->
+            <div id="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+
+                        </div>
+                        <div class="col-md-7">
+                            <h1 style="color: #ffffff">ECOMM</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header><br/>
+
+        <center>
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <!-- ASIDE -->
+                        <div id="aside" class="col-md-3">
+                            <div class="aside">
+                                <div class="">
+                                    <h:form>
+                                        <br/><br/> <h:link value="Go To Store" outcome="/index"/><br/><br/>
+                                        <h:link value="Go To Main Page" outcome="Welcome"/><br/><br/>
+                                        <h:link value="View Transaction Table" outcome="transactionPage"/><br/><br/>
+                                        <h:link value="Sell Item" outcome="sellingPage"/><br/><br/>
+                                        <h:commandLink action="#{loginBean.doLogout}" value="Logout"/><br/><br/>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ASIDE -->
+
+                        <div id="store" class="col-md-9">
+                            <div class="row">
+                                <div class="ex3">
+                                    <h:form>
+                                        <h:panelGrid>
+                                            <div class="col-md-4 col-xs-6">
+                                                <div class="product">
+                                                    <h:outputLabel value="Item Name"/>
+                                                    <h:inputText value="#{edit.name}" required="true" requiredMessage="Name is required"/><br/>
+                                                    <h:outputLabel value="Price"/>
+                                                    <h:inputText value="#{edit.price}" required="true" requiredMessage="Price is required"/><br/>
+                                                    <h:outputLabel value="Number of stock"/>
+                                                    <h:inputText value="#{edit.stockNumber}" required="true" requiredMessage="Stock number is required"/><br/>
+                                                    <div class="add-to-cart">
+                                                        <h:commandButton class="btn btn-primary" value="Edit" action="#{edit.editProduct()}" onclick="if (!confirm('Are you sure you want to edit this item?'))
+                                                                    return false"/>
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </h:panelGrid>
+                                    </h:form>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </h:body>
+</html>
+

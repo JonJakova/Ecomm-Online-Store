@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <meta charset="utf-8"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Checkout</title>
+        <!-- Google font -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet"></link>
+
+        <!-- Bootstrap -->
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+
+        <!-- Slick -->
+        <link type="text/css" rel="stylesheet" href="css/slick.css"/>
+        <link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
+
+        <!-- nouislider -->
+        <link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+
+        <!-- Font Awesome Icon -->
+        <link rel="stylesheet" href="css/font-awesome.min.css"></link>
+
+        <!-- Custom stlylesheet -->
+        <link type="text/css" rel="stylesheet" href="css/style.css"/>
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </h:head>
+    <h:body>
+        <header>
+            <!-- TOP HEADER -->
+            <div id="top-header">
+                <div class="container">
+                    <ul class="header-links pull-left">
+                        <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
+                        <li><h:link class="fa fa-link" value="Main Page" outcome="index"></h:link></li>
+                    </ul>
+                    <ul class="header-links pull-right">
+                        <li><h:link class="fa fa-user" rendered="#{loginBean.loggedIn==false}" value="Login" outcome="login"/></li>
+                        <li><h:link class="fa fa-user" rendered="#{loginBean.loggedIn==true}" value="#{loginBean.username}" outcome="/Inner/Client/Welcome"/></li>
+                        <li><h:link class="fa fa-user" rendered="#{loginBean.adminLog==true}" value="Admin Page" outcome="/Inner/Admin/AdminPage"/></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /TOP HEADER -->
+            <div id="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="header-logo"><br/>
+                                <h1 style="color: #ffffff">ECOMM</h1>
+                            </div>
+                        </div>
+                        <center>
+                            <div class="col-md-8">
+                                <div class="header-search">
+                                    <h:form>
+                                        <h:inputText class="input" id="search" immediate="true" value="#{manager.productName}"/>
+                                        <h:commandButton class="search-btn" onmouseover="this.display = 'none';" 
+                                                         id="searchOutput" value="Search" actionListener="#{manager.searchProduct()}" action="newProductPage"/>
+                                    </h:form>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="header-logo">
+                                    <h:graphicImage style="height: 90px; width: 110px" url="resources/img/header-icon.png"/>
+                                </div>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <center>
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-5">
+                            <h:form>
+                                <div class="billing-details">
+                                    <div class="section-title">
+                                        <h3 class="title">Billing details</h3>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="first-name" placeholder="First Name" required="true"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="last-name" placeholder="Last Name" required="true"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="email" name="email" placeholder="Email" required="true"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="address" placeholder="Address" required="true"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="city" placeholder="City" required="true"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="country" placeholder="Country" required="true"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="zip-code" placeholder="ZIP Code" required="true"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="tel" name="tel" placeholder="Telephone" required="true"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="password" name="cardNumber" placeholder="Credit Card Number" required="true"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="date" name="cardExp" placeholder="Credit Card Expiration Date" required="true"></input>
+                                    </div><br/>
+                                    <div class="btn">
+                                        <h:commandButton class="btn-primary" onclick="if (!confirm('Are you sure you want to buy this item?'))
+                                                    return false" value="Checkout!" action="index"></h:commandButton>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </center>
+
+        <!-- jQuery Plugins -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/slick.min.js"></script>
+        <script src="js/nouislider.min.js"></script>
+        <script src="js/jquery.zoom.min.js"></script>
+        <script src="js/main.js"></script>
+    </h:body>
+</html>
+

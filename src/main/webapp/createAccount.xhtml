@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="utf-8"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Signup</title>
+        <!-- Google font -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet"></link>
+
+        <!-- Bootstrap -->
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+
+        <!-- Slick -->
+        <link type="text/css" rel="stylesheet" href="css/slick.css"/>
+        <link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
+
+        <!-- nouislider -->
+        <link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+
+        <!-- Font Awesome Icon -->
+        <link rel="stylesheet" href="css/font-awesome.min.css"></link>
+
+        <!-- Custom stlylesheet -->
+        <link type="text/css" rel="stylesheet" href="css/style.css"/>
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </h:head>
+    <h:body>
+        <header>
+            <!-- TOP HEADER -->
+            <div id="top-header">
+                <div class="container">
+                    <ul class="header-links pull-left">
+                        <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
+                        <li><h:link class="fa fa-link" value="Main Page" outcome="index"></h:link></li>
+                    </ul>
+                    <ul class="header-links pull-right">
+                        <li><h:link class="fa fa-user" rendered="#{loginBean.loggedIn==false}" value="Login" outcome="login"/></li>
+                        <li><h:link class="fa fa-user" rendered="#{loginBean.loggedIn==true}" value="#{loginBean.username}" outcome="/Inner/Client/Welcome"/></li>
+                        <li><h:link class="fa fa-user" rendered="#{loginBean.adminLog==true}" value="Admin Page" outcome="/Inner/Admin/AdminPage"/></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /TOP HEADER -->
+            <div id="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+
+                        </div>
+                        <div class="col-md-7">
+                            <h1 style="color: #ffffff">ECOMM</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <center>
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2>Create New Account</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="billing-details">
+                <div class="section-title">
+                    <f:view>
+                        <h:form id="registerForm">
+                            <table class="form-group">
+                                <tr>
+                                    <td><h:outputText value="Enter Your First Name: " /></td>
+                                    <td><h:inputText id="fname" value="#{signup.firstname}"
+                                                     required="true" requiredMessage="Please enter your first name" /></td>
+                                    <td><h:message for="fname" style="color:red" /></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputText value="Enter Your Last Name: " /></td>
+                                    <td><h:inputText id="lname" value="#{signup.lastname}"
+                                                     required="true" requiredMessage="Please enter your last name" /></td>
+                                    <td><h:message for="lname" style="color:red" /></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputText value="Enter Your Username :" /></td>
+                                    <td><h:inputText id="username" value="#{signup.username}"
+                                                     required="true" requiredMessage="Please enter your email id" /></td>
+                                    <td><h:message for="username" style="color:red" /></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputText value="Enter Password :" /></td>
+                                    <td><h:inputSecret id="psw" value="#{signup.password}"
+                                                       required="true" requiredMessage="Please enter your password" /></td>
+                                    <td><h:message for="psw" style="color:red" /></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputText value="Enter Your Age: " /></td>
+                                    <td><h:inputText id="age" value="#{signup.age}"
+                                                     required="true" requiredMessage="Please enter your first name" /></td>
+                                    <td><h:message for="age" style="color:red" /></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputText value="Enter Your Phone Number: " /></td>
+                                    <td><h:inputText id="phNum" value="#{signup.phonenumber}"
+                                                     required="true" requiredMessage="Please enter your first name" /></td>
+                                    <td><h:message for="phNum" style="color:red" /></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputText value="Enter Your Address: " /></td>
+                                    <td><h:inputText id="address" value="#{signup.address}"
+                                                     required="true" requiredMessage="Please enter your address" /></td>
+                                    <td><h:message for="address" style="color:red" /></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputText value="Enter Your Credit Card Number " /></td>
+                                    <td><h:inputSecret /></td>
+                                   
+                                </tr>
+                                <tr>
+                                    <td><h:outputText value="Enter Your Credit Card Expiration Date " /></td>
+                                    <td><h:inputText>
+                                            <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                        </h:inputText></td>
+                                   
+                                </tr>
+                                <tr>
+                                    <td />
+                                    <td><h:commandButton id="regButton" binding="#{signup.regButton}" value="Register" action="#{signup.register()}">
+                                            <h:message for="regButton"></h:message>
+                                        </h:commandButton></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputLink value="index.xhtml">Home</h:outputLink></td>
+                                </tr>
+                            </table>
+                        </h:form>
+                    </f:view>
+                </div>
+            </div>
+
+
+        </center>
+
+
+        <!-- jQuery Plugins -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/slick.min.js"></script>
+        <script src="js/nouislider.min.js"></script>
+        <script src="js/jquery.zoom.min.js"></script>
+        <script src="js/main.js"></script>
+    </h:body>
+</html>
+
